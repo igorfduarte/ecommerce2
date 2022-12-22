@@ -1,5 +1,6 @@
 {
   "name": "proshop",
+  "proxy": "http://127.0.0.1:5000",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.2.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",

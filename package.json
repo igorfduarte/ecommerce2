@@ -1,0 +1,30 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server",
+    "server": "nodemon server/server",
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorfduarte/ecommerce2.git"
+  },
+  "author": "Igor Duarte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/igorfduarte/ecommerce2/issues"
+  },
+  "homepage": "https://github.com/igorfduarte/ecommerce2#readme",
+  "dependencies": {    
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.20"
+  }
+}
