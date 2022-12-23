@@ -1,17 +1,23 @@
-const express = require('express')
-const products = require('./data/products')
-const app = express()
+import colors from "colors";
+import dotenv from "dotenv";
+import express from "express";
+import {notFound,errorHandler} from './middleware/error.middleware.js'
+import connectDB from "./config/db.js";
 
-app.get('/',(req,res)=>{
-    res.send('server running')
-})
-app.get('/api/products',(req,res)=>{
-    res.json(products)
-})
-app.get('/api/products/:id',(req,res)=>{
-    const product = products.find(p=>p._id === req.params.id)
-    res.json(product)
-})
+import productRouter from "./routes/product.router.js";
 
-app.listen(5000,console.log('Server running on port 5000'))
+dotenv.config();
 
+connectDB();
+
+const app = express();
+
+//mount routes
+app.use("/api/products", productRouter);
+
+//custom middleware
+app.use(notFound)
+app.use(errorHandler);
+
+const port = process.env.PORT || 5000;
+app.listen(port, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${port}`.yellow.bold));
