@@ -7,6 +7,7 @@ import connectDB from "./config/db.js";
 //import userRouter 
 import productRouter from "./routes/product.router.js";
 import userRouter from './routes/user.router.js'
+import orderRouter from './routes/order.router.js'
 dotenv.config();
 
 connectDB();
@@ -19,8 +20,10 @@ app.use(express.json())
 //mount routes
 app.use("/api/products", productRouter);
 app.use("/api/users", userRouter);
+app.use("/api/orders", orderRouter);
 
-
+//paypal
+app.get('/api/config/paypal',(req,res)=> res.send(process.env.PAYPAL_CLIENT_ID))
 
 //custom middleware
 app.use(notFound)
